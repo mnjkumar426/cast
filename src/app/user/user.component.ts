@@ -10,16 +10,24 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class UserComponent implements OnInit {
   user_name: any;
   user:any={};
+  repos:any[];
   constructor(private service: GitserviceService, private route: ActivatedRoute) {
     this.user_name = this.route.snapshot.params['username'];
   }
 
   ngOnInit() {
     this.get_user_details();
+    this.get_user_repos();
   }
   get_user_details() {
     this.service.get_user_details(this.user_name).subscribe((res) => {
       this.user = res.json();
+    }
+    );
+  }
+  get_user_repos() {
+    this.service.get_user_repos(this.user_name).subscribe((res) => {
+      this.repos = res.json();
     }
     );
   }

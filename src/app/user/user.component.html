@@ -1,11 +1,26 @@
 <div class="row">
   <div class="col-md-3">
     <div>
-      <img  class="img-responsive img-rounded" src="{{user.avatar_url}}" style="max-width: 100%;">
+      <img class="img-responsive img-rounded" src="{{user.avatar_url}}" style="max-width: 100%;">
     </div>
     <h3>{{user.name}}</h3>
     <p>{{user.login}}</p>
     <p>{{user.bio}}</p>
   </div>
-  <div class="col-md-9"></div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-6 " *ngFor="let repo of repos">
+<div class="card">
+        <a href="#" class="small_heading">{{repo.full_name}}</a>
+        <p class="description">{{repo.description}}</p>
+        <p>
+          <a><span class="language-color"></span>{{repo.language}}</a>
+          <a>{{repo.stargazers_count}}</a>
+          <a>{{repo.forks_count}}</a>
+        </p>
+</div>
+      </div>
+    </div>
+
+  </div>
 </div>
