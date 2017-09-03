@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 import { NgModule } from '@angular/core';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
@@ -39,7 +41,7 @@ import  { DataService} from './service/share-data.service';
     ,
     routing
   ],
-  providers: [GitserviceService,DataService],
+  providers: [GitserviceService,DataService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
