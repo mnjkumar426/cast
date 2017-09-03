@@ -19,24 +19,50 @@ private options=null;
    {
     return this.http.get(BASE_URL+"search/repositories?q="+serach+"&per_page="+per_page+"&page="+page_no+"&"+filter,this.options).
     map(res=>res)
+    .catch((e)=>{
+        return Observable.throw(e);
+
+    })
      
   }
   get_user_details(username:any):Observable<any>
   {
    return this.http.get(BASE_URL+"users/"+username,this.options).
    map(res=>res)
-    
+   .catch((e)=>{
+    return Observable.throw(e);
+
+})
  }
 
- get_user_repos(username:string){
-  return this.http.get(BASE_URL+"users/"+username+"/repos?sort=pushed&per_page=9",this.options).
+ get_user_repos(username:string,page){
+  return this.http.get(BASE_URL+"users/"+username+"/repos?sort=pushed&per_page=9&page="+page,this.options).
   map(res=>res)
+  .catch((e)=>{
+    return Observable.throw(e);
+
+})
  }
 
  get_lang_count(lang:string){
   return this.http.get(BASE_URL+"search/repositories?q="+lang+"&per_page=1",this.options).
   map(res=>res)
+  .catch((e)=>{
+    return Observable.throw(e);
+
+})
  }
+
+ get_user_followers(username:string,page){
+  return this.http.get(BASE_URL+"users/"+username+"/followers?per_page=9&page="+page,this.options).
+  map(res=>res)
+  .catch((e)=>{
+    return Observable.throw(e);
+
+})
+ }
+
+ 
 
  
 /*get_user_repos(username:string){

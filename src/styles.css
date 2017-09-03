@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+.main{
+    min-height:100%;
+    position:relative;
+    padding-bottom: 100px;
+}
+.ngx-pagination {
+    margin-left: 0;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
 .card{
    
      border: 1px #e1e4e8 solid !important;
@@ -49,4 +65,29 @@
 .ac1{
    
     color: #586069 ;
+}
+.loading{
+	position: absolute;
+    left: 0;
+	top: 0;
+    background-color: rgba(221,221,221,.4);
+	width: 100%;
+	height: 100%;
+}
+.spinner{
+    position: fixed;
+    left: 50%;
+    top: 25%;
+    font-size:50px;
+    color: #0366d6; 
+}
+.counter{
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: #586069;
+    background-color: rgba(27,31,35,0.08);
+    border-radius: 20px;
 }

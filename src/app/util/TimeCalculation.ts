@@ -55,6 +55,7 @@ export  class TimeCalculation{
         }
 
         public static nFormatter(num, digits) {
+          if(num){
           var si = [
             { value: 1E18, symbol: "E" },
             { value: 1E15, symbol: "P" },
@@ -69,6 +70,9 @@ export  class TimeCalculation{
             }
           }
           return num.toFixed(digits).replace(rx, "$1");
+        }else{
+          return 0;
+        }
         }
 
 }

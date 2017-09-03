@@ -1,14 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- header-->
-<div class="container">
+
     
 <app-header></app-header>
 <!-- Main  -->
-
-  
+<div class="container">
+  <div  class="main"    style="position:relative">
 <router-outlet></router-outlet>
+<div *ngIf="isLoading" class="loading"><i class="fa fa-circle-o-notch fa-spin  spinner" ></i></div> 
+  </div>
 
 <!-- Footer-->
-<app-footer></app-footer>
 </div>
+<app-footer></app-footer>
 

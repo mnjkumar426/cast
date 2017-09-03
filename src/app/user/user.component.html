@@ -1,26 +1,74 @@
 <div class="row">
   <div class="col-md-3">
     <div>
-      <img class="img-responsive img-rounded" src="{{user.avatar_url}}" style="max-width: 100%;">
+      <img class="img-responsive img-rounded" src="{{user.avatar_url}}" style="max-width: 100%;    border-radius: 10px;">
     </div>
     <h3>{{user.name}}</h3>
     <p>{{user.login}}</p>
     <p>{{user.bio}}</p>
+    <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{user.location}}</p>
+    <p><a href="{{user.blog}}">{{user.blog}}</a></p>
+
   </div>
   <div class="col-md-9">
     <div class="row">
-      <div class="col-md-6 " *ngFor="let repo of repos">
-<div class="card">
-        <a href="#" class="small_heading">{{repo.full_name}}</a>
-        <p class="description">{{repo.description}}</p>
-        <p class="f6">
-          <a  class="mr1  ac1"><span class="language-color"  [ngStyle]="{'backgroundColor':get_color(repo.language) }"></span>{{repo.language}} </a>
-          <a href="#" class="u_link mr1 ac1"><i class="  fa fa-star-o" aria-hidden="true"></i>{{repo.stargazers_count}}</a>
-          <a href="#" class="u_link  mr1  ac1"><i class=" fa fa-code-fork" aria-hidden="true"></i>{{repo.forks_count}}</a>
-        </p>
-</div>
+
+      <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#Overview" aria-controls="Overview" role="tab" data-toggle="tab" (click)="overview()">Overview</a></li>
+          <li role="presentation"><a href="#Repositories" aria-controls="Repositories" role="tab" data-toggle="tab" (click)="repos_click(1)">Repositories<span class="counter">{{nFormatter(user.public_repos,1)}}</span></a></li>
+
+        
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="Overview">
+
+            <div class="row">
+              <div class="col-md-6 " *ngFor="let repo of overviews">
+                <div class="card">
+                  <a href="#" class="small_heading">{{repo.full_name}}</a>
+                  <p class="description">{{repo.description}}</p>
+                  <p class="f6">
+                    <a class="mr1  ac1"><span class="language-color"  [ngStyle]="{'backgroundColor':get_color(repo.language) }"></span>{{repo.language}} </a>
+                    <a href="#" class="u_link mr1 ac1"><i class="  fa fa-star-o" aria-hidden="true"></i>{{nFormatter(repo.stargazers_count,1)}}</a>
+                    <a href="#" class="u_link  mr1  ac1"><i class=" fa fa-code-fork" aria-hidden="true"></i>{{nFormatter(repo.forks_count,1)}}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div role="tabpanel" class="tab-pane" id="Repositories">
+            <div class="row">
+              <div class="col-md-12 " *ngFor="let repo of repos | paginate: { itemsPerPage: 9, currentPage: page, totalItems: user.public_repos }">
+                <div class="card">
+                  <a href="#" class="small_heading">{{repo.full_name}}</a>
+                  <p class="description">{{repo.description}}</p>
+                  <p class="f6">
+                    <a class="mr1  ac1"><span class="language-color"  [ngStyle]="{'backgroundColor':get_color(repo.language) }"></span>{{repo.language}} </a>
+                    <a href="#" class="u_link mr1 ac1"><i class="  fa fa-star-o" aria-hidden="true"></i>{{nFormatter(repo.stargazers_count,1)}}</a>
+                    <a href="#" class="u_link  mr1  ac1"><i class=" fa fa-code-fork" aria-hidden="true"></i>{{nFormatter(repo.forks_count,1)}}</a>
+                  </p>
+                </div>
+              </div>
+
+              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9"></pagination-controls>
+
+            </div>
+
+          </div>
+          
+        </div>
+
       </div>
+
     </div>
+
+
 
   </div>
 </div>

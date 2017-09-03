@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 import { routing } from './app.routing';
@@ -13,6 +14,7 @@ import{GitserviceService}  from './service/gitservice.service'
 import { HttpModule } from '@angular/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { UserComponent } from './user/user.component';
+import  { DataService} from './service/share-data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +26,20 @@ import { UserComponent } from './user/user.component';
     RepoComponent,
     UserComponent
   ],
-  imports: [BrowserModule,
+  imports: [
+    
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    
+   ReactiveFormsModule,
+    BrowserModule,
     HttpModule,
     NgxPaginationModule
     ,
     routing
   ],
-  providers: [GitserviceService],
+  providers: [GitserviceService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

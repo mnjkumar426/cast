@@ -1,5 +1,5 @@
-export class LanguageColor{
-   private static colors={
+export class LanguageColor {
+    private static colors = {
         "1C Enterprise": {
             "color": "#814CCC",
             "url": "https://github.com/trending?l=1C-Enterprise"
@@ -1409,15 +1409,19 @@ export class LanguageColor{
             "url": "https://github.com/trending?l=Zimpl"
         }
     };
-  constructor(){
-      
-  }
-    public static  get_lang_color(lang:string){
+    constructor() {
 
-      
-       
-   
-        return   this.colors[lang].color;;
     }
-   
+    public static get_lang_color(lang: string) {
+
+        if (lang) {
+            return this.colors[lang].color;;
+        } else {
+            return "";
+        }
+
+
+
+    }
+
 }
