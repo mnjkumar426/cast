@@ -1,0 +1,20 @@
+<div  class="row">
+  <div class=""col-md-12>
+    <h2>{{total_count}} repository results</h2>
+  </div>
+</div>
+<div class="row"  *ngFor="let item of  items  | paginate: { itemsPerPage: 9, currentPage: p, totalItems: total_count }">
+  <div  class="col-md-8">
+      <h3><a  [routerLink]="['/users',item.owner.login]">{{item.full_name}}</a></h3>
+      <p class="col-md-9">{{item.description}}</p>
+      <p>last update  {{ get_time_ago(item.updated_at)}}</p>
+  </div>
+  <div  class="col-md-2">
+      {{item.name}}
+  </div>
+  <div  class="col-md-2">{{item.forks_count}}</div>
+</div>
+<div class="row">
+    <pagination-controls  (pageChange)="pageChanged($event)"
+    maxSize="9"></pagination-controls>
+</div>
