@@ -13,18 +13,21 @@ export class RepoComponent implements OnInit {
   private s: string;
   private total_count: number;
   private items:any[]
+  selectedSort="";
   p:number=1;
   constructor(private route: ActivatedRoute, private service: GitserviceService) {
     this.s = this.route.snapshot.params['search'];
     console.log("id==" + this.s);
+    this.selectedSort="";
 
   }
+
 
   ngOnInit() {
-    this.get_repo(this.s,Constant.PER_PAGE,this.p);
+    this.get_repo(this.s,Constant.PER_PAGE,this.p,this.selectedSort);
   }
-  get_repo(s:any,per_page:number,page:number){
-    this.service.get_repo(s,per_page,page).subscribe((res) => {
+  get_repo(s:any,per_page:number,page:number,sort:string){
+    this.service.get_repo(s,per_page,page,sort).subscribe((res) => {
       
             let data = res.json();
       
@@ -40,8 +43,17 @@ export class RepoComponent implements OnInit {
   }
   pageChanged(e:any){
     this.p=e;
-    this.get_repo(this.s,Constant.PER_PAGE,this.p);
+    this.get_repo(this.s,Constant.PER_PAGE,this.p,this.selectedSort);
     console.log(e);
+  }
+  onFilter(e:any){
+    this.selectedSort=e;
+    console.log(e);
+    this.get_repo(this.s,Constant.PER_PAGE,this.p,this.selectedSort);
+
+  }
+  nFormatter(num:number,digit:number){
+    return TimeCalculation.nFormatter(num,digit); 
   }
 
 }

@@ -1,0 +1,26 @@
+.home-menu {
+    list-style-type: none;
+}
+.home-menu li{
+    border:   2px  solid #586069;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px
+    
+
+
+}
+.home-menu li  a{
+    font-size: 24px;
+    display: block;
+    color: #586069;
+    font-weight: 600
+    
+}
+
+.home-menu li img{
+    width: 80px;
+    margin-right: 50px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}

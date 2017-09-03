@@ -40,6 +40,7 @@
     text-decoration: none;
 }
 .u_link:hover{
+    text-decoration: none;
     color: #0366d6  !important;
 }
 .mr1{

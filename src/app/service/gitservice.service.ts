@@ -15,9 +15,9 @@ private options=null;
     this.headers = new Headers({'Content-Type': 'application/json','Accept': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
    }
-   get_repo(serach:string,per_page:number,page_no:number):Observable<any>
+   get_repo(serach:string,per_page:number,page_no:number,filter:any):Observable<any>
    {
-    return this.http.get(BASE_URL+"search/repositories?q="+serach+"&per_page="+per_page+"&page="+page_no,this.options).
+    return this.http.get(BASE_URL+"search/repositories?q="+serach+"&per_page="+per_page+"&page="+page_no+"&"+filter,this.options).
     map(res=>res)
      
   }
@@ -30,6 +30,11 @@ private options=null;
 
  get_user_repos(username:string){
   return this.http.get(BASE_URL+"users/"+username+"/repos?sort=pushed&per_page=9",this.options).
+  map(res=>res)
+ }
+
+ get_lang_count(lang:string){
+  return this.http.get(BASE_URL+"search/repositories?q="+lang+"&per_page=1",this.options).
   map(res=>res)
  }
 
