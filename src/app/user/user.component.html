@@ -13,10 +13,10 @@
 <div class="card">
         <a href="#" class="small_heading">{{repo.full_name}}</a>
         <p class="description">{{repo.description}}</p>
-        <p>
-          <a><span class="language-color"></span>{{repo.language}}</a>
-          <a>{{repo.stargazers_count}}</a>
-          <a>{{repo.forks_count}}</a>
+        <p class="f6">
+          <a  class="mr1  ac1"><span class="language-color"  [ngStyle]="{'backgroundColor':get_color(repo.language) }"></span>{{repo.language}} </a>
+          <a href="#" class="u_link mr1 ac1"><i class="  fa fa-star-o" aria-hidden="true"></i>{{repo.stargazers_count}}</a>
+          <a href="#" class="u_link  mr1  ac1"><i class=" fa fa-code-fork" aria-hidden="true"></i>{{repo.forks_count}}</a>
         </p>
 </div>
       </div>

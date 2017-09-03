@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GitserviceService } from '../service/gitservice.service'
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { LanguageColor } from '../util/lagauge-color'
 
 @Component({
   selector: 'app-user',
@@ -9,8 +10,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   user_name: any;
-  user:any={};
-  repos:any[];
+  user: any = {};
+  repos: any[];
   constructor(private service: GitserviceService, private route: ActivatedRoute) {
     this.user_name = this.route.snapshot.params['username'];
   }
@@ -30,6 +31,9 @@ export class UserComponent implements OnInit {
       this.repos = res.json();
     }
     );
+  }
+  get_color(lag: string) {
+    return LanguageColor.get_lang_color(lag);
   }
 
 }
